@@ -1,0 +1,37 @@
+import discord
+import requests
+
+intents = discord.Intents().all()
+client = discord.Client(intents = intents);
+
+
+@client.event
+async def on_ready():
+  print('The bear has awoken'.format(client))
+
+
+@client.event
+async def on_message(message):
+    
+  if message.author == client.user:
+    return
+
+  if message.content.lower().startswith('!help'):
+    await message.channel.send('!help - lists commands \n !hello - introduces the bear \n !ai *prompt* \n')
+  
+  if message.content.lower().startswith('!ai'):
+    await message.channel.send('The AI feature is still in development')
+
+  if message.content.lower().startswith('!hello'):
+    await message.channel.send('Hello! I am your friendly local bear assistant! \n ask me anything (see !help command) :bear:')
+
+ 
+
+  if message.content.lower().startswith('!future'):
+    await message.channel.send('Features that need to be implemented \n upcoming plans/events \n youtube/music \n fnaf lore via wesbite information retrieval \n keyboard website')
+
+  if message.content.lower().startwith('!fnaf'):
+    await message.channel.send(' Five Nights at Freddys (FNaF) is a video game series and media franchise created by Scott Cawthon. The first video game of the same name was released on August 8, 2014, and the resultant series has since gained worldwide popularity. ')
+
+client.run('MTEzMjAyNjM4MzYwMjgzMTQ0MA.GvD8-1.6SNyj-oK9mRbAKjk1p7vqcCbnwpKy8z4fcphwc')
+
